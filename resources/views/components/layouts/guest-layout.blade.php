@@ -18,7 +18,14 @@
     <script src="https://kit.fontawesome.com/266a593bd6.js" crossorigin="anonymous"></script>
     
 </head>
-<body>
+<body
+    x-data="{ 'darkMode': false, 'loaded': true }"
+    :class="{
+        'overflow-hidden': loaded,
+        'dark bg-gray-900': darkMode === true
+    }"
+    class="bg-gray-100 text-gray-900 font-[outfit] h-screen"
+>
     <div>
     {{ $slot }}    
     </div>
