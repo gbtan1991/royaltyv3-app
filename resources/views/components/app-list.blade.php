@@ -20,20 +20,35 @@
                             {{ data_get($item, $key) }}
                         </td>
                     @endforeach
+
                     @if (!empty($actions))
-                        <td class="border px-4 py-2">
+                        <td class="border px-4 py-2 space-x-2">
                             @foreach($actions as $action)
-                                <a href="{{ route($action['route'], $item->id) }}"
-                                   class="text-{{ $action['color'] ?? 'blue' }}-500 hover:underline mr-2">
-                                    {{ $action['label'] }}
-                                </a>
+                                @if(strtolower($action['label']) === 'delete')
+                                    <form action="{{ route($action['route'], $item->id) }}" method="POST" class="inline"
+                                          onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="text-{{ $action['color'] ?? 'red' }}-600 hover:underline">
+                                            {{ $action['label'] }}
+                                        </button>
+                                    </form>
+                                @else
+                                    <a href="{{ route($action['route'], $item->id) }}"
+                                       class="text-{{ $action['color'] ?? 'blue' }}-600 hover:underline">
+                                        {{ $action['label'] }}
+                                    </a>
+                                @endif
                             @endforeach
                         </td>
                     @endif
                 </tr>
             @empty
                 <tr>
-                    <td colspan="{{ count($columns) + 2 }}" class="border px-4 py-2 text-center">No records found.</td>
+                    <td colspan="{{ count($columns) + 2 }}" class="border px-4 py-2 text-center">
+                        No records found.
+                    </td>
                 </tr>
             @endforelse
         </tbody>
