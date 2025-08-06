@@ -10,17 +10,15 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=outfit:400,500,600,700" rel="stylesheet" />
 
+    
 
     <!-- Styles and Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://kit.fontawesome.com/266a593bd6.js" crossorigin="anonymous"></script>
     
 </head>
-<body
-    
->
-
-   
+<body>
     <div>
     {{ $slot }}    
     </div>
