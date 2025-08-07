@@ -1,5 +1,4 @@
 <x-ui.app-form method="POST" action="{{ route('admin.login') }}">
-
     {{-- Username --}}
     <div class="mb-5">
         <x-ui.app-label for="username" required>
